@@ -1,0 +1,27 @@
+main:
+  DELAY_ON_KEY_PRESS: 0.3
+  DELAY_BEFORE_UPDATE_FPS: 0.1
+
+gui:
+  title: "FTN CHEAT"
+  padding: 20
+  background_color: "10, 10, 10, 200"
+
+  title_color: "#ffaa00"
+  title_font_size: 24px
+  title_font_weight: bold
+
+  fps_label_color: "white"
+  fps_label_font_weight: bold
+  fps_label_font_size: 28px
+
+  default_label_color: "#ddd"
+  default_label_font_size: 20px
+  default_label_font_weight: none
+
+  overlay_position: "0, 0"
+  overlay_size: "300, 500"
+  refresh_rate: 200 #in milliseconds
+
+capture:
+  FPS_COMPUTATION_FRAME_COUNT: 50
