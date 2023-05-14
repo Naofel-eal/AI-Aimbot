@@ -5,7 +5,7 @@ from utils.logger import Logger
 
 class ObjectDetectionService:
     
-    def __init__(self, checkpoint_path='./checkpoints/ckpt_best.pth', logger=None) -> None:
+    def __init__(self, checkpoint_path='./checkpoints/model.pth', logger=None) -> None:
         self.logger = Logger() if logger is None else logger
         self.checkpoint_path = checkpoint_path
         self.device = 'cuda' if cuda.is_available() else "cpu"
@@ -28,20 +28,17 @@ class ObjectDetectionService:
         """
         Run object detection using the provided model.
         """
-        result = self.model.predict(frame)
+        result = self.model.predict(frame)._images_prediction_lst[0].draw()
         return result
 
-    def get_prediction_info(self, predictions):
+    def get_prediction_info(self, prediction):
         """
         Get the bounding boxes, confidence, labels and class names from the prediction.
         """
-        results = []
-        for image_prediction in predictions:
-            class_names = image_prediction.class_names
-            labels = image_prediction.prediction.labels
-            confidence = image_prediction.prediction.confidence
-            bboxes = image_prediction.prediction.bboxes_xyxy
-            results.append((bboxes, confidence, labels, class_names))
-        return results
+        original_simage = prediction.image
+        bboxes = prediction.prediction.bboxes_xyxy
+        confidence = prediction.prediction.confidence
+        labels = prediction.prediction.labels
+        class_names = prediction.class_names
 
        

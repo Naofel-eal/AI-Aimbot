@@ -72,7 +72,7 @@ class AppController(QThread):
                 if frame is not None:
                     prediction = self.object_detection_service.process_frame(frame)
                     if self.is_rendering_mode_enabled:
-                        self.frame_renderer_service.render(frame, fps)
+                        self.frame_renderer_service.render(prediction, fps)
                 fps = self.capture_service.get_fps()
                 
                 current_time = perf_counter()

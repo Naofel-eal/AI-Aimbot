@@ -7,7 +7,7 @@ from services.capture_service import CaptureService
 from services.object_detection_service import ObjectDetectionService
 from services.frame_renderer_service import FrameRendererService
 from utils.logger import Logger
-from controller.app_controller import AppController
+from controllers.app_controller import AppController
 
 def main():
     # Initialize services
