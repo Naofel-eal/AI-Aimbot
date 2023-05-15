@@ -10,10 +10,15 @@ class CaptureService:
         self.frame_counter = 0
         self.fps_average = 0
         self.FPS_COMPUTATION_FRAME_COUNT = configuration['FPS_COMPUTATION_FRAME_COUNT']
+        self.FPS_COMPUTATION_DELAY = configuration['FPS_COMPUTATION_DELAY']
         self.window_name = window_name
         self.cam = dxshot.create(output_idx=output_idx, output_color=output_color)
         self.logger.info("Capture service initialized.")
-        
+    
+    def load_config(self, configuration):
+        self.FPS_COMPUTATION_FRAME_COUNT = configuration['FPS_COMPUTATION_FRAME_COUNT']
+        self.FPS_COMPUTATION_DELAY = configuration['FPS_COMPUTATION_DELAY']
+
     def start_performance_counter(self):
         """
         Start the camera and performance counter.
@@ -29,7 +34,7 @@ class CaptureService:
             A frame from the camera buffer.
         """
         
-        if self.frame_counter == self.FPS_COMPUTATION_FRAME_COUNT:
+        if self.frame_counter == self.FPS_COMPUTATION_FRAME_COUNT or perf_counter() - self.start_time > self.FPS_COMPUTATION_DELAY :
             self.start_performance_counter()
         self.frame_counter += 1
         return self.cam.grab()

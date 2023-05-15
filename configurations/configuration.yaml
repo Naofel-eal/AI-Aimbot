@@ -24,4 +24,5 @@ gui:
   refresh_rate: 200 #in milliseconds
 
 capture:
-  FPS_COMPUTATION_FRAME_COUNT: 50
+  FPS_COMPUTATION_FRAME_COUNT: 200
+  FPS_COMPUTATION_DELAY: 1

@@ -13,7 +13,7 @@ def main():
     # Initialize services
     logger = Logger()
     configuration = ConfigLoader(logger).load()
-    object_detection_service = ObjectDetectionService(logger=logger)
+    object_detection_service = ObjectDetectionService(model_type='yolo_nas_s', logger=logger)
     capture_service = CaptureService(configuration['capture'], logger=logger)
     frame_renderer_service = FrameRendererService(display_fps=False, logger=logger)
 

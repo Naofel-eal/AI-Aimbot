@@ -6,12 +6,12 @@ class Overlay(QWidget):
     
     def __init__(self, configuration):
         super().__init__()
-        self.load_data_from_config(configuration)
+        self.load_config(configuration)
         self.init_attributes()
         self.init_ui()
         self.init_timer()
     
-    def load_data_from_config(self, config):
+    def load_config(self, config):
         self.title = config['title']
         self.padding = int(config['padding'])
         self.background_color = QColor(*map(int, config['background_color'].split(',')))
@@ -76,7 +76,8 @@ class Overlay(QWidget):
 
     def set_fps(self, fps):
         self.fps = fps  # Update the FPS value, you can replace this with the actual FPS value
-        self.fps_label.setText(f'FPS: {self.fps}')
+        fps_str = 'FPS: %.2f' % self.fps
+        self.fps_label.setText(fps_str)
         
     def set_cheat_state(self, state):
         self.cheat_state = state
