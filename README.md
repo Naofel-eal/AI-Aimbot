@@ -14,6 +14,8 @@ This program is written in Python and uses YOLO-NAS model to find Fortnite enemy
 - Mouse deplacement on the head of the target 
 - Image rendering after detection
 
+# Demonstration
+![Demo](./resources/demo.gif)
 
 ## Authors
 
